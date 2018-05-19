@@ -65,20 +65,20 @@ class App extends Component {
   }
 
   onClick (e) {
-    const x = e.target.dataset.x
-    const y = e.target.dataset.y
+    const x = parseInt(e.target.dataset.x)
+    const y = parseInt(e.target.dataset.y)
 
-    this.setState(prevState => ({
-      playerPosition: {
-        x: x,
-        y: y
-      }
-    }))
+    if (! isNaN(x) || ! isNaN(y)) {
+      this.setState(prevState => ({
+        playerPosition: {
+          x: x,
+          y: y
+        }
+      }))
+    }
   }
 
   render() {
-    console.log('App update')
-
     return (
       <div className="App">
         <LevelOne
