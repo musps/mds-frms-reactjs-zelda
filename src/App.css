@@ -54,6 +54,18 @@ body {
   background-color: #EC644B;
   border: 1px solid yellow;
 }
+.player.up {
+  border-top: 3px solid red !important;
+}
+.player.down {
+  border-bottom: 3px solid red !important;
+}
+.player.left {
+  border-left: 3px solid red !important;
+}
+.player.right {
+  border-right: 3px solid red !important;
+}
 
 /**
   *
