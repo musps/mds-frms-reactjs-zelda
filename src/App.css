@@ -42,15 +42,28 @@ body {
 }
 
 .tile {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   background-color: red;
-  border: 1px solid yellow;
+  border: 1px solid black;
 }
 
 .player {
-  width: 48px;
-  height: 48px;
-  background-color: blue;
+  width: 23px;
+  height: 23px;
+  background-color: #EC644B;
   border: 1px solid yellow;
+}
+
+/**
+  *
+  */
+.tile-zero {
+  background-color: blue;
+}
+.tile-one {
+  background-color: pink;
+}
+.tile-two {
+  background-color: green;
 }
