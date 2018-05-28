@@ -3,10 +3,9 @@ import TileConfig from './Config/Tile'
 import {
   Player
 } from './Tools'
+import movePlayer from './Actions/MovePlayer'
 import Tile from './Components/Tile'
 
-import movePlayer from './Actions/MovePlayer'
-import attackPlayer from './Actions/AttackPlayer'
 const Board = ({map, player, children}) => (
   <div className='board'>
     {children}
@@ -17,9 +16,9 @@ const BoardContainer = class BoardContainer extends Component {
   state = {
     board: [],
     playerPosition: {
-      dir: 'right',
-      x: 5,
-      y: 13
+      dir: 'up',
+      x: 11,
+      y: 11
     }
   }
 
@@ -42,23 +41,22 @@ const BoardContainer = class BoardContainer extends Component {
   keysHandler (e) {
     const setState = this.setState.bind(this)
     const playerPosition = this.state.playerPosition
-    const board = this.state.board
 
     switch (e.code) {
       case 'ArrowUp':
-        movePlayer(board, playerPosition, 'up', setState)
+        movePlayer(playerPosition, 'ArrowUp', setState)
         break;
       case 'ArrowDown':
-        movePlayer(board, playerPosition, 'down', setState)
+        movePlayer(playerPosition, 'ArrowDown', setState)
         break;
       case 'ArrowLeft':
-        movePlayer(board, playerPosition, 'left', setState)
+        movePlayer(playerPosition, 'ArrowLeft', setState)
         break;
       case 'ArrowRight':
-        movePlayer(board, playerPosition, 'right', setState)
+        movePlayer(playerPosition, 'ArrowRight', setState)
         break;
       case 'KeyQ':
-        attackPlayer(board, playerPosition, setState)
+        console.log('hit')
         break;
     }
   }
@@ -69,11 +67,9 @@ const BoardContainer = class BoardContainer extends Component {
       _board[x] = []
 
       for (let y = 0; y < map[x].length; y = y + 1) {
-        let tile = Object.assign({}, TileConfig[map[x][y]])
-        tile.x = x
-        tile.y = y
-        _board[x][y] = tile
+        _board[x][y] = TileConfig[map[x][y]]
       }
+
     }
 
     this.setState({
@@ -82,8 +78,6 @@ const BoardContainer = class BoardContainer extends Component {
   }
 
   renderMap () {
-    console.log('map update')
-
     const playerPosition = this.state.playerPosition
     const _board = []
     const setPlayer = (playerPosition, x, y) => {
@@ -99,7 +93,6 @@ const BoardContainer = class BoardContainer extends Component {
       for (let y = 0; y < this.state.board[x].length; y = y + 1) {
         _board[x].push(
           <Tile 
-            config={this.state.board[x][y]}
             key={`${x}-${y}`}
             type={this.state.board[x][y].className} 
             x={x}
@@ -109,6 +102,9 @@ const BoardContainer = class BoardContainer extends Component {
         )
       }
     }
+
+    console.log('_board', _board)
+
     return _board
   }
 

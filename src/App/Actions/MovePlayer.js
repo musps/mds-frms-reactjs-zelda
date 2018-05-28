@@ -1,41 +1,17 @@
 
-const movePlayer = (curPosition, nextDirection, setState) => {
-  let x = curPosition.x
-  let y = curPosition.y
-  let dir = curPosition.dir
+const updateDirection = (dir, setState) => {
+  console.log('updateDirection')
+  setState(prevState => ({
+    ...prevState,
+    playerPosition: {
+      ...prevState.playerPosition,
+      dir: dir,
+    }
+  }))
+}
 
-  const minX = 0
-  const maxX = 19
-  const minY = 0
-  const maxY = 19
-
-  switch (nextDirection) {
-    case 'ArrowUp':
-      if (x > minX) {
-        x = x - 1
-        dir = 'up'
-      }
-      break;
-    case 'ArrowDown':
-      if (x < maxX) {
-        x = x + 1
-        dir = 'down'
-      }
-      break;
-    case 'ArrowLeft':
-      if (y > minY) {
-        y = y - 1
-        dir = 'left'
-      }
-      break;
-    case 'ArrowRight':
-      if (y < maxY) {
-        y = y + 1
-        dir= 'right'
-      }
-      break;
-  }
-
+const updatePosition = (dir, x, y, setState) => {
+  console.log('updatePosition')
   setState(prevState => ({
     ...prevState,
     playerPosition: {
@@ -44,6 +20,49 @@ const movePlayer = (curPosition, nextDirection, setState) => {
       y: y
     }
   }))
+}
+
+const movePlayer = (board, curPosition, nextDir, setState) => {
+  let nextX = curPosition.x
+  let nextY = curPosition.y
+
+  const minX = 0
+  const maxX = (board.length - 1)
+  const minY = 0
+  const maxY = (board[0].length - 1)
+
+  switch (nextDir) {
+    case 'up':
+      if (nextX > minX) {
+        nextX = nextX - 1
+      }
+      break;
+    case 'down':
+      if (nextX < maxX) {
+        nextX = nextX + 1
+      }
+      break;
+    case 'left':
+      if (nextY > minY) {
+        nextY = nextY - 1
+      }
+      break;
+    case 'right':
+      if (nextY < maxY) {
+        nextY = nextY + 1
+      }
+      break;
+  }
+
+  updateDirection(nextDir, setState)
+
+  if (nextX >= minX && nextX <= maxX && nextY >= minY && nextY <= maxY) {
+    const tile = board[nextX][nextY]
+
+    if (tile.canWalk) {
+      updatePosition(nextDir, nextX, nextY, setState)
+    }
+  }
 }
 
 export default movePlayer
