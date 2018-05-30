@@ -1,27 +1,34 @@
 const TileConfig = {
   '0': {
     'id': 0,
-    'name': 'dirt',
-    'className': 'tile-zero',
+    'name': 'floor',
+    'className': 'tile-floor',
     'canWalk': true,
     'canBeDestroyed': false
   },
   '1': {
     'id': 1,
-    'name': 'wall',
-    'className': 'tile-one',
+    'name': 'stone',
+    'className': 'tile-stone',
     'canWalk': false,
     'canBeDestroyed': false
   },
   '2': {
     'id': 2,
-    'name': 'wall2',
-    'className': 'tile-two',
+    'name': 'grass',
+    'className': 'tile-grass',
     'canWalk': false,
     'canBeDestroyed': true,
     'destroyConfig': {
       'hp': 5
     }
+  },
+  '3': {
+    'id': 3,
+    'name': 'tree',
+    'className': 'tile-tree',
+    'canWalk': true,
+    'canBeDestroyed': false
   }
 }
 

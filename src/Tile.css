@@ -1,0 +1,37 @@
+/**
+  * TREE
+  */
+.tile-floor {
+  background-color: #F2F1EF;
+}
+
+/**
+  * TREE
+  */
+.tile-tree {
+  background-color: #013243;
+}
+
+/**
+  * GRASS
+  */
+.tile-grass {
+  background-color: #3FC380;
+}
+.tile-grass.tile-grass-0 {
+  background-color: transparent;
+}
+
+/**
+  * STONE
+  */
+.tile-stone {
+  background-color: #BDC3C7;
+}
+
+/**
+  * STONE
+  */
+.tile-door {
+  background-color: #F2F1EF;
+}

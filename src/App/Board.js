@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import TileConfig from './Config/Tile'
-import {
-  Player
-} from './Tools'
+
 import Tile from './Components/Tile'
+import Player from './Components/Player'
 
 import movePlayer from './Actions/MovePlayer'
 import attackPlayer from './Actions/AttackPlayer'
+
 const Board = ({map, player, children}) => (
   <div className='board'>
     {children}
@@ -82,8 +82,6 @@ const BoardContainer = class BoardContainer extends Component {
   }
 
   renderMap () {
-    console.log('map update')
-
     const playerPosition = this.state.playerPosition
     const _board = []
     const setPlayer = (playerPosition, x, y) => {
