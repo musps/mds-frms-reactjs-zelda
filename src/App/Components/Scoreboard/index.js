@@ -30,21 +30,18 @@ export const InfoItem = ({name, value}) => (
   </div>
 )
 
-export const PlayerInfo = () => (
-  <div className='player-info'>
-    player info
-  </div>
-)
-
 export const Inventaire = ({children}) => (
   <div className='inventaire'>
     {children}
   </div>
 )
 
-export const InventaireItem = () => (
+export const InventaireItem = ({content}) => {
+  return (
   <div className='inventaire-item'>
+    {content}
   </div>
-)
+  )
+}
 
 export default Scoreboard

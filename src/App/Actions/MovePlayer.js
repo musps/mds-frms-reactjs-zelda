@@ -1,4 +1,3 @@
-
 const updateDirection = (dir, setState) => {
   console.log('updateDirection')
   setState(prevState => ({

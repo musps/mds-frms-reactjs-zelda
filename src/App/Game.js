@@ -5,10 +5,10 @@ import TileConfig from './Config/Tile'
 import Scoreboard, {
   PlayerInfo,
   Inventaire,
-  InventaireItem,
   Info,
   InfoItem
 } from './Components/Scoreboard'
+import InventaireItem from './Containers/InventaireItem'
 
 const Game = class Game extends Component {
   state = {

@@ -1,4 +1,3 @@
-
 const destroyTile = (board, x, y, setState) => {
   const tile = JSON.parse(JSON.stringify(Object.assign({}, board[x][y])))
 
